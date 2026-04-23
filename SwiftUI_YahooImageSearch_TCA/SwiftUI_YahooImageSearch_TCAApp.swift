@@ -6,12 +6,25 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct SwiftUI_YahooImageSearch_TCAApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(
+                store: Store(initialState: ImageSearchFeature.State()) {
+                    ImageSearchFeature()
+                }
+            )
         }
     }
 }
+
+/*
+ ImageSearchView(
+     store: Store(initialState: ImageSearchFeature.State()) {
+         ImageSearchFeature()
+     }
+ )
+ */

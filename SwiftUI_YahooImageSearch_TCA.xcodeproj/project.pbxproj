@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3169A4A32F9A3F8A007E135A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 3169A4A22F9A3F8A007E135A /* ComposableArchitecture */; };
+		3169A4CD2F9A42C5007E135A /* QGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 3169A4CC2F9A42C5007E135A /* QGrid */; };
+		3169A4D02F9A4310007E135A /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 3169A4CF2F9A4310007E135A /* ActivityIndicatorView */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		3169A4812F9A3E66007E135A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3169A4CD2F9A42C5007E135A /* QGrid in Frameworks */,
+				3169A4D02F9A4310007E135A /* ActivityIndicatorView in Frameworks */,
+				3169A4A32F9A3F8A007E135A /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +121,9 @@
 			);
 			name = SwiftUI_YahooImageSearch_TCA;
 			packageProductDependencies = (
+				3169A4A22F9A3F8A007E135A /* ComposableArchitecture */,
+				3169A4CC2F9A42C5007E135A /* QGrid */,
+				3169A4CF2F9A4310007E135A /* ActivityIndicatorView */,
 			);
 			productName = SwiftUI_YahooImageSearch_TCA;
 			productReference = 3169A4732F9A3E63007E135A /* SwiftUI_YahooImageSearch_TCA.app */;
@@ -195,6 +207,11 @@
 			);
 			mainGroup = 3169A46A2F9A3E63007E135A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3169A4A12F9A3F8A007E135A /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				3169A4CB2F9A42C5007E135A /* XCRemoteSwiftPackageReference "QGrid" */,
+				3169A4CE2F9A4310007E135A /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3169A4742F9A3E63007E135A /* Products */;
 			projectDirPath = "";
@@ -578,6 +595,53 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3169A4A12F9A3F8A007E135A /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.25.5;
+			};
+			traits = (
+			);
+		};
+		3169A4CB2F9A42C5007E135A /* XCRemoteSwiftPackageReference "QGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Q-Mobile/QGrid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
+		3169A4CE2F9A4310007E135A /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ActivityIndicatorView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3169A4A22F9A3F8A007E135A /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3169A4A12F9A3F8A007E135A /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		3169A4CC2F9A42C5007E135A /* QGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3169A4CB2F9A42C5007E135A /* XCRemoteSwiftPackageReference "QGrid" */;
+			productName = QGrid;
+		};
+		3169A4CF2F9A4310007E135A /* ActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3169A4CE2F9A4310007E135A /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
+			productName = ActivityIndicatorView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3169A46B2F9A3E63007E135A /* Project object */;
 }
