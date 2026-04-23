@@ -5,9 +5,8 @@
 //  Created by cano on 2026/04/23.
 //
 
-import SwiftUI
 import ComposableArchitecture
- 
+
 @Reducer
 struct ImageSearchFeature {
  
@@ -19,14 +18,14 @@ struct ImageSearchFeature {
     // MARK: - State
     @ObservableState
     struct State: Equatable {
-        var searchText       = ""
-        var imageDatas       = [ImageData]()
-        var isLoading        = false
-        var hasSearched      = false
+        var searchText      = ""
+        var imageDatas      = [ImageData]()
+        var isLoading       = false
+        var hasSearched     = false           // 一度でも検索を実行したか
         var selectedImage: ImageData? = nil
-        var isShowingDetail  = false
-        var currentPage      = 1
-        var hasNextPage      = true
+        var isShowingDetail = false
+        var currentPage     = 1
+        var hasNextPage     = true            // まだ次ページがあるか
  
         // 3文字以上入力されたらボタン有効
         var isButtonEnabled: Bool { searchText.count >= 3 }
@@ -45,6 +44,7 @@ struct ImageSearchFeature {
     }
  
     // debounce用のキャンセルID
+    // searchTextChangedの0.5秒待機のキャンセルに使用
     private static let debounceID = "debounce"
  
     // MARK: - Reducer
@@ -53,15 +53,18 @@ struct ImageSearchFeature {
             switch action {
  
             // テキスト変更 → 0.5秒debounceして自動検索
+            // 入力のたびに前の待機をキャンセルして新しい待機を開始する
             case .searchTextChanged(let text):
                 state.searchText = text
                 guard state.isButtonEnabled else {
+                    // 3文字未満になったら待機中のEffectをキャンセル
                     return .cancel(id: Self.debounceID)
                 }
                 return .run { send in
                     try await Task.sleep(for: .milliseconds(500))
                     await send(.searchButtonTapped)
                 }
+                // 新しい入力が来たら前の待機をキャンセルして再スタート
                 .cancellable(id: Self.debounceID, cancelInFlight: true)
  
             // 1ページ目を取得して既存リストをリセット
@@ -80,7 +83,6 @@ struct ImageSearchFeature {
                         await send(.searchResponse(.failure(error)))
                     }
                 }
-                .cancellable(id: Self.debounceID, cancelInFlight: true)
  
             // 初回検索結果をStateにセット
             case .searchResponse(.success(let images)):
