@@ -26,7 +26,7 @@ struct ImageData: Identifiable, Hashable, Sendable {
 }
 
 // エラー
-enum ImageError: Error {
+enum ImageError: Error, Equatable  {
     case serverError
     case noData
 }

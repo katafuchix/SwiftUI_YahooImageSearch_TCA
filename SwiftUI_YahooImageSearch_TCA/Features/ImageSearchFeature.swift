@@ -32,12 +32,12 @@ struct ImageSearchFeature {
     }
  
     // MARK: - Action
-    enum Action {
+    enum Action: Equatable {
         case searchTextChanged(String)        // テキストフィールドの変更
         case searchButtonTapped               // 検索ボタンタップ
-        case searchResponse(Result<[ImageData], Error>)       // 初回検索の結果
+        case searchResponse(Result<[ImageData], ImageError>)    // 初回検索の結果
         case loadNextPage                     // 次ページ取得トリガー
-        case loadNextPageResponse(Result<[ImageData], Error>) // 次ページ取得の結果
+        case loadNextPageResponse(Result<[ImageData], ImageError>) // 次ページ取得の結果
         case imageTapped(ImageData)           // 画像タップ → 詳細表示
         case selectedImageChanged(ImageData?) // PhotoBrowserのスワイプで選択画像が変わった
         case detailDismissed                  // 詳細画面を閉じた
@@ -79,8 +79,10 @@ struct ImageSearchFeature {
                     do {
                         let images = try await imageSearchClient.search(query, 1)
                         await send(.searchResponse(.success(images)))
+                    } catch let error as ImageError {
+                       await send(.searchResponse(.failure(error)))
                     } catch {
-                        await send(.searchResponse(.failure(error)))
+                       await send(.searchResponse(.failure(.serverError)))
                     }
                 }
  
@@ -108,8 +110,10 @@ struct ImageSearchFeature {
                     do {
                         let images = try await imageSearchClient.search(query, nextPage)
                         await send(.loadNextPageResponse(.success(images)))
-                    } catch {
+                    } catch let error as ImageError {
                         await send(.loadNextPageResponse(.failure(error)))
+                    } catch {
+                        await send(.loadNextPageResponse(.failure(.serverError)))
                     }
                 }
  
