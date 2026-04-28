@@ -1,5 +1,13 @@
 # SwiftUI_YahooImageSearch_TCA
 
+## データフローのイメージ
+```
+[View] ---(Action)---> [Store/Reducer] ---(新しいState)---> [View]
+                              |
+                         [Effect]
+                         (API通信など)
+```
+
 
 ### TCA固有の注意点
 
