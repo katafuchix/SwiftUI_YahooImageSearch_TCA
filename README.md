@@ -1,7 +1,11 @@
 # SwiftUI_YahooImageSearch_TCA
+- [SwiftUI + TCA版](https://github.com/katafuchix/SwiftUI_YahooImageSearch_TCA)
 - [SwiftUI + MVVM版](https://github.com/katafuchix/SwiftUI_YahooImageSearch_MVVM)
-- (RxSwift版）[https://github.com/katafuchix/SwiftUI_YahooImageSearch_MVVM]
+- [RxSwift + Action版](https://github.com/katafuchix/YahooImageSearchAction)
+- [RxSwift + Wireframe版](https://github.com/katafuchix/YahooImageSearchWireframe)
+- [RxSwift簡易MVVM版](https://github.com/katafuchix/ImageSearchSample)
 - [Flutter版](https://github.com/katafuchix/flutter_yahoo_image_search_cubit)
+- [Kotlin版](https://github.com/katafuchix/ImageSearchSampleKotlin)
 
 ## データフローのイメージ
 ```
