@@ -29,3 +29,9 @@
 - LazyVGrid の ForEach 内で ObservableObject を直接生成するとページ追加時にリセットされる → @State + .task で各セルに持たせる
 - AsyncImage はカスタムヘッダー（Referer等）を付けられない → URLSession で自前実装する
 - スクロール末尾検知は ScrollView + onAppear より LazyVGrid の Section footer が確実
+
+### TCAの概要
+- **State**（状態）: アプリの状態を表すデータモデル。
+- **Action**（アクション）: ユーザー操作やイベントを定義する。
+- **Reducer**（リデューサー）: Actionに応じてStateを更新する。
+- **Store**（ストア）: State、Action、Reducerを管理する中心的な役割。
